@@ -2,7 +2,7 @@
 
 :root {
   /* CSS HEX */
-  --mango: #ffbe0bff;
+  --aquamarine: #7fffd4;
   --orange-pantone: #fb5607ff;
   --winter-sky: #ff006eff;
   --blue-violet: #8338ecff;
@@ -50,14 +50,18 @@ textarea {
 
 .jumbotron {
   text-align: center;
-  background-color: transparent;
+  background-color: aliceblue;
   color: black;
-  border-radius: 0;
+  border-radius: 3;
   border-bottom: 10px solid black;
 }
 
 .description {
   white-space: pre-wrap;
+}
+
+.lead {
+  padding-top: 1rem;
 }
 
 .time-block {
