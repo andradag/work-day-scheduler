@@ -1,11 +1,5 @@
 /* Index Style Sheet */
 
-body {
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
-  line-height: 1;
-}
-
 :root {
   /* CSS HEX */
   --mango: #ffbe0bff;
@@ -13,6 +7,14 @@ body {
   --winter-sky: #ff006eff;
   --blue-violet: #8338ecff;
   --azure: #3a86ffff;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .event-container {
@@ -24,10 +26,13 @@ body {
 
 #time-label {
   flex-grow: 1;
+  padding-top: 2rem;
+  padding-left: 2rem;
 }
 
 #user-event {
   flex-grow: 2;
+  padding-top: 2rem;
 }
 
 #save-btn {
