@@ -3,10 +3,10 @@
 :root {
   /* CSS HEX */
   --aquamarine: #7fffd4;
-  --orange-pantone: #fb5607ff;
+  --grey: #fb5607ff;
   --winter-sky: #ff006eff;
   --blue-violet: #8338ecff;
-  --azure: #3a86ffff;
+  --azure: #f0ffff;
 }
 
 body {
@@ -25,7 +25,7 @@ body {
 }
 
 #time-label {
-  flex-grow: 1;
+  flex-grow: 2;
   padding-top: 2rem;
   padding-left: 2rem;
 }

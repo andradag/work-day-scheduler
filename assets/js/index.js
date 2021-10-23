@@ -2,10 +2,16 @@ const onLoad = function () {
   // on record load, check local storage
   checkLocalStorage();
 
-  //Render Clock
+  //get Current Day
+
+  //render Current Day
+
+  //render Time Blocks
+
+  //render Clock
   renderClock();
 
-  //Render Hour Block
+  //render Hour Block
   renderHourBlocks();
 
   //set Present / Future color coordination
@@ -28,5 +34,6 @@ const renderHourBlocks = function () {
 
 const isPresent = function () {
   // if present - set color to --aquamarine
-  // if false - set color to --orange-pantone
+  // if false - set color to --blue-violet
+  // if future - set color to --azure
 };
