@@ -1,50 +1,46 @@
 const workingHours = [
   {
-    hour: "09:00am",
-    event: $("#user-input"),
+    hour: "09:00",
+    localStorage: "9",
   },
   {
-    hour: "10:00am",
-    event: $("#user-input"),
+    hour: "10:00",
+    localStorage: "10",
   },
   {
-    hour: "11:00am",
-    event: $("#user-input"),
+    hour: "11:00",
+    localStorage: "11",
   },
   {
-    hour: "12:00am",
-    event: $("#user-input"),
+    hour: "12:00",
+    localStorage: "12".
   },
   {
     hour: "13:00",
-    event: $("#user-input"),
+    localStorage: "13",
   },
   {
     hour: "14:00",
-    event: $("#user-input"),
+    localStorage: "14",
   },
   {
     hour: "15:00",
-    event: $("#user-input"),
+    localStorage: "15",
   },
   {
     hour: "16:00",
-    event: $("#user-input"),
+    localStorage:  "16",
   },
   {
     hour: "17:00",
-    event: $("#user-input"),
+    localStorage: "17",
   },
 ];
-const hour = "9";
-const moHour = moment(hour).format("HH");
-console.log(moHour);
-
-let currentHourIndex = 0;
+const activitiesByHour = [];
 
 const onLoad = function () {
   // on record load, check local storage
-  checkLocalStorage();
+  initializeLocalStorage();
 
   //get Current Day
 
@@ -56,18 +52,12 @@ const onLoad = function () {
    renderClock();
 
   //set Present / Future color coordination
-  isPresent();
+  
+  const initializeLocalStorage = function () {
+    const dataFromLS = localStorage.getItem("activitiesByHour");
 
-  //render Hour Block
-  constructHourBlocks();
-
-  const checkLocalStorage = function () {
-    const dataFromLS = localStorage.getItem("user-input");
-
-    const activitiesByHour = [];
     if (!dataFromLS) {
-      console.log("no data");
-      localStorage.setItem("activitiesByHour", JSON.stringify(activitiesByHour));
+      localStorage.setItem("activitiesByHour", JSON.stringify({}));
     } else {
       console.log("data");
       localStorage.getItem("activitiesByHour", JSON.parse(activitiesByHour));
@@ -88,7 +78,9 @@ const onLoad = function () {
 
       for (let i = 0; i < workingHours.length; i++) {
         const data = workingHours[i];
-        const userInput = $("<textarea/>").attr("id", "user-event");
+        const userInput = $("<textarea/>", {
+            text: getTestForKey(parseInt(data.localStorageKey)),
+        });
         const timeLabel = $("<label>", {
           name: "time-label",
           id: "time-label",
@@ -99,22 +91,61 @@ const onLoad = function () {
 
       const saveBtn = $("<button/>", {
         text: "Save Event",
-        id: "save-btn",
+        id: data.localStoragekey
         class: "saveBtn",
       });
       const eventContainer = $("<div>", {
-        class: "event-container",
+        class: "event-container" $(getTimeBlockClassName(
+            parseInt(data.localStorageKey)
+        )),
       });
+      eventContainer.attr("data-time, data.localStorageKey);")
       eventContainer.append(timeLabel, userInput, saveBtn);
       const container = $("#container");
       container.append(eventContainer);
     };
+    const saveData = function (event) {
+        if ($(event.target).is("button")) {
+          const currentButton = $(event.target).attr("id");
+          const userInput = $(event.target).prev().val();
+          console.log(currentButton);
+          console.log(userInput);
+          localStorage.setItem("activitiesByHour", JSON.stringify("{}"));
+        }
+
+
+    };
+    $("#container").click(saveData);
+    //add click event on the container
+    //condition if onClick element = button
+    // retrieve button id
+    // text content
+    };
+   
+    
+// const currentHour = moment().hour();
+const currentHour = 12;
+console.log(currentHour);
+
+    const getTimeBlockClassName = function (hour) {
+      if (hour > currentHour) {
+        return "future";
+      } else if (hour === currentHour) {
+        return "present";
+      } else {
+        return "past";
+      }
   };
 
-  const isPresent = function () {
-    // if present - set color to --aquamarine
-    // if false - set color to --blue-violet
-    // if future - set color to --azure
+  const getTextForKey = function (hour) {
+    const dataFromLS = localStorage.getItem("activitiesByHour");
+  const hourText = dataFromLS;
+  if (!dataFromLS) {
+    return;
+  } else {
+    const textArea = JSON.parse(localStorage.getItem("activitiesByHour"));
+    return "textArea";
+  }
   };
 };
 onLoad();
