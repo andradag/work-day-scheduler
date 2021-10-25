@@ -13,7 +13,7 @@ const workingHours = [
   },
   {
     hour: "12:00",
-    localStorage: "12".
+    localStorage: "12",
   },
   {
     hour: "13:00",
@@ -42,27 +42,22 @@ const onLoad = function () {
   // on record load, check local storage
   initializeLocalStorage();
 
-  //get Current Day
-
-  //render Current Day
-
-  //render Time Blocks
-
   //render Clock
    renderClock();
 
-  //set Present / Future color coordination
+   // render Hour Block
+   constructHourBlocks();
+   renderEventDiary();
+
+ 
   
   const initializeLocalStorage = function () {
     const dataFromLS = localStorage.getItem("activitiesByHour");
 
     if (!dataFromLS) {
       localStorage.setItem("activitiesByHour", JSON.stringify({}));
-    } else {
-      console.log("data");
-      localStorage.getItem("activitiesByHour", JSON.parse(activitiesByHour));
     }
-
+  };
     const renderClock = function () {
       function update() {
         $("#clock").html(moment().format("DD MMMM YYYY H:mm:ss"));
@@ -73,55 +68,49 @@ const onLoad = function () {
 
    
     const constructHourBlocks = function () {
-        const currentHour = workingHours[currentHourIndex];
-        console.log(currentHour);
 
       for (let i = 0; i < workingHours.length; i++) {
         const data = workingHours[i];
-        const userInput = $("<textarea/>", {
-            text: getTestForKey(parseInt(data.localStorageKey)),
-        });
+        const userInput = $("<textarea/>");
         const timeLabel = $("<label>", {
           name: "time-label",
           id: "time-label",
           class: "time-of-day",
         });
-        timeLabel.data("time");
+
         timeLabel.text(data.hour);
 
       const saveBtn = $("<button/>", {
         text: "Save Event",
-        id: data.localStoragekey
+        id: data.localStoragekey,
         class: "saveBtn",
       });
       const eventContainer = $("<div>", {
-        class: "event-container" $(getTimeBlockClassName(
+        class: "event-container" ${getTimeBlockClassName(
             parseInt(data.localStorageKey)
-        )),
-      });
+        )};
       eventContainer.attr("data-time, data.localStorageKey);")
       eventContainer.append(timeLabel, userInput, saveBtn);
       const container = $("#container");
       container.append(eventContainer);
-    };
+
     const saveData = function (event) {
         if ($(event.target).is("button")) {
-          const currentButton = $(event.target).attr("id");
+          const timeOfEvent = $(event.target).attr("id");
           const userInput = $(event.target).prev().val();
-          console.log(currentButton);
-          console.log(userInput);
-          localStorage.setItem("activitiesByHour", JSON.stringify("{}"));
+          const dataFromLocalStorage = JSON.parse(
+            localStorage.getItem("activitiesByHour")
+          );
+          dataFromLocalStorage[timeOfEvent] = userInput;
+          localStorage.setItem(
+            "activitiesByHour",
+            JSON.stringify(dataFromLocalStorage)
+          );
         }
 
 
     };
     $("#container").click(saveData);
-    //add click event on the container
-    //condition if onClick element = button
-    // retrieve button id
-    // text content
-    };
-   
     
 // const currentHour = moment().hour();
 const currentHour = 12;
@@ -137,15 +126,23 @@ console.log(currentHour);
       }
   };
 
-  const getTextForKey = function (hour) {
-    const dataFromLS = localStorage.getItem("activitiesByHour");
-  const hourText = dataFromLS;
-  if (!dataFromLS) {
-    return;
-  } else {
-    const textArea = JSON.parse(localStorage.getItem("activitiesByHour"));
-    return "textArea";
-  }
-  };
+  const renderEventDiary = function () {
+    const dataFromLocalStorage = JSON.parse(
+      localStorage.getItem("activitiesByHour")
+    );
+    console.log("Local Storage", dataFromLocalStorage);
+  
+    const renderText = function (index) {
+      const hour = $(this).next().attr("id");
+      console.log(hour);
+      if (dataFromLocalStorage.hasOwnProperty(hour)) {
+        console.log("testing if function");
+        $(this).text(dataFromLocalStorage[hour]);
+      }
+    };
+  
+    $("textarea").each(renderText);
+  
 };
 onLoad();
+    
