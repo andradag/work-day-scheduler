@@ -111,8 +111,7 @@ const saveData = function (event) {
 
 $("#container").click(saveData);
 
-const currentHour = moment().hour() - 10;
-console.log(currentHour);
+const currentHour = moment().hour();
 
 const getTimeBlockClassName = function (hour) {
   if (hour > currentHour) {
