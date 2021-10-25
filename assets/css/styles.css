@@ -27,6 +27,7 @@ body {
   color: white;
   border-radius: 5px;
   margin: 10px;
+  margin-top: 2rem;
 }
 .event-container {
   border: 1px black solid;
@@ -39,10 +40,10 @@ body {
   background-color: azure;
 }
 .future {
-  background-color: azure;
+  background-color: var(--winter-sky);
 }
 .present {
-  background-color: azure;
+  background-color: aquamarine;
 }
 
 #time-label {
@@ -99,17 +100,17 @@ textarea {
 }
 
 .past {
-  background-color: #d3d3d3;
+  background-color: azure;
   color: white;
 }
 
 .present {
-  background-color: #ff6961;
+  background-color: aquamarine;
   color: white;
 }
 
 .future {
-  background-color: #77dd77;
+  background-color: #ff006eff;
   color: white;
 }
 
