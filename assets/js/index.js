@@ -66,7 +66,7 @@ const onLoad = function () {
       setInterval(update, 1000);
     };
 
-   
+   // Construct Hour Blocks in workingHours Array
     const constructHourBlocks = function () {
 
       for (let i = 0; i < workingHours.length; i++) {
@@ -86,9 +86,9 @@ const onLoad = function () {
         class: "saveBtn",
       });
       const eventContainer = $("<div>", {
-        class: "event-container" ${getTimeBlockClassName(
+        class: 'event-container ${getTimeBlockClassName(
             parseInt(data.localStorageKey)
-        )};
+        )}';
       eventContainer.attr("data-time, data.localStorageKey);")
       eventContainer.append(timeLabel, userInput, saveBtn);
       const container = $("#container");
@@ -112,9 +112,7 @@ const onLoad = function () {
     };
     $("#container").click(saveData);
     
-// const currentHour = moment().hour();
-const currentHour = 12;
-console.log(currentHour);
+const currentHour = moment().hour();
 
     const getTimeBlockClassName = function (hour) {
       if (hour > currentHour) {
@@ -130,13 +128,12 @@ console.log(currentHour);
     const dataFromLocalStorage = JSON.parse(
       localStorage.getItem("activitiesByHour")
     );
-    console.log("Local Storage", dataFromLocalStorage);
   
     const renderText = function (index) {
       const hour = $(this).next().attr("id");
-      console.log(hour);
+
       if (dataFromLocalStorage.hasOwnProperty(hour)) {
-        console.log("testing if function");
+  
         $(this).text(dataFromLocalStorage[hour]);
       }
     };
@@ -144,5 +141,14 @@ console.log(currentHour);
     $("textarea").each(renderText);
   
 };
-onLoad();
+
+const clearLS = function (event) {
+    console.log(event.target);
+    localStorage.clear();
+    window.location.reload();
+  };
+  
+  $("#clear-ls").click(clearLS);
+  
+  window.addEventListener("load", onLoad);
     
