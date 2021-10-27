@@ -1,12 +1,12 @@
-# work-day-scheduler
+# Work Day Scheduler
 
 a simple calendar application that allows a user to save events for each hour of the day by modifying starter code
 
-## Current day display
+## Current Day Display
 
 - Uses moment JS to get today's date
 
-## Time blocks
+## Time Blocks
 
 - time blocks for 9AM to 5PM
 - past time block
@@ -51,17 +51,17 @@ planner | "{ "9": "travel to work", "13": "have lunch", "17": "go home" }"
   - get the text value from the time block
   - update LS with the key value pair (13, "have lunch")
 
-## BONUS
+## Bonus
 
 - Added a button to clear local storage
 - Added a button with the save button to clear that particular time block text
 - Added a clock in the header
 
-## DEPLOYED URL
+## Deployed URL
 
 You can view the GitHub pages deployed application [here](https://andradag.github.io/work-day-scheduler/).
 
-## SCREENSHOTS
+## Screenshots
 
 Start Page
 
