@@ -1,24 +1,21 @@
-# Work Day Scheduler
+## Current day display
 
-a simple calendar application that allows a user to save events for each hour of the day by modifying starter code
+- Use moment JS to get today's date
+- format today's date to something presentable "Thursday, September 5th"
 
-## Current Day Display
-
-- Uses moment JS to get today's date
-
-## Time Blocks
+## Time blocks
 
 - time blocks for 9AM to 5PM
 - past time block
 - present time block
 - future time block
-- time block are clickable
-- you are able to enter some text
+- time block should be clickable
+- should be able to enter some text
 - each time block has a save button (clickable)
 - when save button clicked save the event data in local storage for that particular time
-- past time blocks will be azure
-- present time blocks will be aquarium
-- future time blocks will be winter-sky
+- past time blocks will be gray
+- present time blocks will be red
+- future time blocks will be green
 
 ## Local Storage
 
@@ -51,22 +48,8 @@ planner | "{ "9": "travel to work", "13": "have lunch", "17": "go home" }"
   - get the text value from the time block
   - update LS with the key value pair (13, "have lunch")
 
-## Bonus
+## BONUS
 
-- Added a button to clear local storage
-- Added a button with the save button to clear that particular time block text
-- Added a clock in the header
-
-## Deployed URL
-
-You can view the GitHub pages deployed application [here](https://andradag.github.io/work-day-scheduler/).
-
-## Screenshots
-
-Start Page
-
-<img src="assets/images/screenshots/screenshot-01.png"/>
-
-Saving time block text
-
-<img src="assets/images/screenshots/screenshot-02.png"/>
+- Add a button to clear local storage
+- Add a button with the save button to clear that particular time block text
+- Add a clock in the header
